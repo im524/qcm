@@ -1,0 +1,35 @@
+{% block content %}
+{% load static %}
+<html>
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+     <link rel="stylesheet" type="text/css" href="{% static 'myblog/etudiant.css' %}">
+<nav class="navbar navbar-expand-sm bg-success navbar-dark fixed-top" style="opacity: 0.6;">
+   <a class="navbar-brand mr-4" href="/">QCM</a>
+</nav>
+</head>
+<body>
+<div class="loginbox">
+	<br><br>
+   &nbsp;  <text>{{message}}</text>
+<form method="post" action="espaceEtudiant">
+    {% csrf_token %}
+
+  {{ form.as_p }}
+
+ &nbsp;&nbsp;&nbsp;<input type="submit" value="Login"></br>
+</form>
+</div>
+</body>
+</html>
+  {% endblock content %}
+
+
+
+
+

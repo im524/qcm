@@ -1,0 +1,109 @@
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>QCM</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+     <meta charset="utf-8">
+ <link rel="stylesheet" type="text/css" href="{% static 'myblog/et.css' %}">
+	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
+    <nav class="navbar navbar-expand-sm bg-success navbar-dark fixed-top" style="opacity: 0.6;">
+   <a class="navbar-brand mr-4" href="/">QCM</a>&nbsp;&nbsp;&nbsp;&nbsp;
+</br>
+
+       <!-- &nbsp; <form method="post" action="correct">{% csrf_token %}
+     <select name="ch"><option value="">evaluation...</option> {% for sef in eva %}
+     <option value={{sef}}>
+     {% endfor %}{% for b in ev%}{{b.idev.description}}{% endfor %}</option></select></br></br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input  align="center" type="submit" value="valider"></form>-->
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a class="navbar-brand mr-4" href="{% url 'logout' %}">Logout</a>
+
+
+    </nav>
+</head>
+<br>
+<br>
+<br>
+<br>
+<meta http-equiv="refresh" content="30;url=home2Eval">
+</br> </br>
+<!--<p>prière de respecter les dates des évaluations  </p>
+<p color="red">tout non respect des consignes implique une sanction!</p>-->
+<body>
+<div class="container">
+<div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">C'est le temps pour l'evaluation</h5>
+        <form method="post"  action="allQuizEval">
+    {% csrf_token %}
+    {{message}}</br> </br>
+    <p class="card-text">
+     <table class="table table-striped">
+   <tbody><tr><td>{% for mati in idQuizz %}
+          <input type="radio" id="allQuiz" name="allQuizs" value="{{mati.id_quiz}}">
+          <label for="allQuiz">{{mati.description }}</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{mati.dateDebut }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{mati.dateFin}}{% endfor %}</tr></td>
+   </tbody>
+    </table></p>
+
+
+    <input align="center" type="submit" value="valider">
+        </form>
+        <br>
+
+
+    </div></div>
+<br>
+<br>
+<br>
+<a class="btn btn-outline-success btn-xs" href="{% url 'notes' %}" style=" margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);">l'historique des notes</a>
+</div>
+<form method="post"  action="cor">
+    {% csrf_token %}
+<select name="ch">
+<option value="">evaluation..</option>
+    {% for i in eva%}
+   <option value="{{i}}">{% endfor %}{% for b in ev%}{{b.idev.description}}{% endfor %}</option>
+
+</select>
+    <input align="center" type="submit" value="valider">
+</form>
+
+<table class="table table-striped">
+    <thead>
+      <tr><th>
+          <h5>Les réponses</h5></th>
+          <th><h4>Les notes:</h4></th>
+      </tr></thead>
+    <tbody>
+      <tr>
+        <td>{% for i in evi%}
+<p>{{i.id_reponses.response}}</p>
+
+{% endfor %}  </td>
+
+{% for n in cc %}
+<p>{{n.reponse}}</p>
+{% endfor %}
+          <th>
+{% for k in j %}
+    <h4>{{k.note}}</h4>
+    {% endfor %}</th></tr>
+    </tbody>
+  </table>
+</body></html>
+<style type="text/css">
+</style>
+{% endblock content %}

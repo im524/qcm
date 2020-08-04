@@ -1,0 +1,10 @@
+.banner {
+      position: relative;
+      height: 270px;
+      background-image: url('eva.jpg');
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      }

@@ -1,0 +1,21 @@
+{% extends "myblog/baseET.html" %}
+ {% block content %}
+
+
+<form method="post" action="ChoixMtEval">
+                {% csrf_token %}
+
+            <select name="subjects"><option value=" ">matiere...</option> {% for mati in mat %}
+     <option value={{mati.idmatiere}}>
+          <p>  {{mati.nomMatiere }}</p>
+     </option> {% endfor %}</select>
+
+
+        <select name="level"><option value=" ">niveau...</option> {% for nive in niv %}
+     <option value={{nive.id_niveau}}>
+          <p>  {{nive.description}}</p>
+         </option> {% endfor %}
+        </select>
+    <input align="center" type="submit" value="chercher">
+                </form>
+{% endblock content %}

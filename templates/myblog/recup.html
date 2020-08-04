@@ -1,0 +1,12 @@
+{% block content %}
+<form method="post" action="home2Eval">
+    {% csrf_token %}
+    <nav class="navbar navbar-default">
+</br>
+     <select name=""><option value="">evaluation...</option> {% for sef in eva %}
+     <option value={{sef.idev}}>
+     <p>{{sef.idev.description}}</p>
+     </option> {% endfor %}</select></br></br>
+</nav>
+</form>
+{% endblock content %}

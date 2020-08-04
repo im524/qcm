@@ -1,0 +1,173 @@
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>QCM</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'myblog/et.css' %}">
+	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
+    <nav class="navbar navbar-expand-sm bg-success navbar-dark fixed-top" style="opacity: 0.6;">
+   <a class="navbar-brand mr-4" href="/">QCM</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="navbar-brand mr-4" href="{% url 'logout' %}">Logout</a>
+    </nav>
+</head>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript">
+   function myFunc(){
+    var x = document.getElementsByName("choix");
+  var i;
+  var k=0;
+  for (i = 0; i < x.length; i++) {
+    if (x[i].checked == true) {
+    if (x[i].id == 'False'){k=0;continue;}
+    else if(x[i].id == 'True'){k=k+1;}
+    }
+}
+ document.getElementById('val').value = k;
+
+    }
+
+
+</script>
+<body>
+<br>
+<br>
+    <br>
+<br>
+
+  <div class="container-fluid">
+
+         <div class="card flex-md-row card-accent-success mb-3 h-md-250">
+            <div class="card-body d-flex flex-column align-items-start">
+<script>
+var tim={{duree}};
+var t = setTimeout("myFunc();document.myform.submit();", tim * 60000 ); //2 seconds measured in miliseconds
+</script>
+
+ <form name="myform" method="post"  action="traitEval">
+ {% csrf_token %}
+
+{{message}}
+
+<!--<input type="text" name="tim" value={{dt}} placeholder="{{dt}}">-->
+
+  {% for q in questi%}
+                 <h5>{{q.questionA}}</h5>
+                      <br>
+                {% for kh in ref %}
+                {% if kh.idQuest == q %}
+
+
+                  <label class="container">
+                <input type="checkbox" value ="{{ kh.id_reponse }}" id="{{ kh.estVrai }}" name="choix">{{ kh.response }}</input>
+                       <span class="checkmark"></span>
+                  </label>
+
+                {% endif %}
+                {% endfor %}
+     {% endfor %}
+ <input id="val" type="hidden" name="val" >
+     <input  type="hidden" name="total" value="{{k}}">
+         <button onclick="myFunc()" class="btn btn-info">Valider</button>
+
+ </form>
+            </div>
+
+         </div> </div>
+
+<footer class="page-footer font-small blue-grey lighten-5">
+
+  <div style="background-color: #66cc66;">
+    <div class="container">
+
+
+      <div class="row py-4 d-flex align-items-center">
+
+        <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+          <h6 class="mb-0">Get connected with us on social networks!</h6>
+        </div>
+
+        <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <div class="container text-center text-md-left mt-5">
+
+
+    <div class="row mt-3 dark-grey-text">
+
+
+      <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+
+
+        <h6 class="text-uppercase font-weight-bold">QCM</h6>
+
+ </h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+
+
+      </div>
+
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Contact</h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+        <p>
+          <i class="fas fa-envelope mr-3"></i> info@example.com</p>
+        <p>
+          <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+        <p>
+          <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+
+      </div>
+
+    </div>
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center text-black-50 py-3">© 2020 Copyright:
+    <a class="dark-grey-text" href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+{% endblock content %}
+</body>
+</html>

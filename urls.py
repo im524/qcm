@@ -1,0 +1,56 @@
+from django.urls import path
+from . import views
+
+
+urlpatterns = [
+ path('', views.home, name='myblog-home'),
+ path('about', views.about, name='myblog-about'),
+ path('questionnaire', views.questionnaire, name='questionnaire'),
+ path('espaceEnseignant', views.espaceEnseignant, name='myblog-espaceEnseignant'),
+ path('espaceEtudiant', views.espaceEtudiant, name='myblog-espaceEtudiant'),
+path('add_question_form_submission', views.add_question_form_submission, name='add_question_form_submission'),
+path('subject', views.subject, name='subject'),
+path('subj', views.subj, name='subj'),
+path('createQcm', views.createQcm, name='createQcm'),
+path('home1', views.home1, name='home1'),
+path('home2', views.home2, name='home2'),
+path('ChoixMt', views.ChoixMt, name='ChoixMt'),
+path('allQuiz',views.allQuiz,name='allQuiz'),
+path('home3', views.home3, name='home3'),
+path('traitQcm', views.traitQcm, name='traitQcm'),
+path('correction', views.correction, name='correction'),
+path('correctionDetails', views.correctionDetails, name='correctionDetails'),
+path('correctionDetailsEval', views.correctionDetailsEval, name='correctionDetailsEval'),
+path('details', views.details, name='details'),
+path('detailsEval', views.detailsEval, name='detailsEval'),
+path('etudiant0', views.etudiant0, name='etudiant0'),
+path('home0', views.home0, name='home0'),
+path('evalu', views.evalu, name='evalu'),
+path('eval', views.eval, name='eval'),
+path('createEval', views.createEval, name='createEval'),
+#path('etudEval', views.etudEval, name='etudEval'),
+#path('ChoixMtEval', views.ChoixMtEval, name='ChoixMtEval'),
+path('allQuizEval', views.allQuizEval, name='allQuizEval'),
+path('home3Eval', views.home3Eval, name='home3Eval'),
+path('home2Eval', views.home2Eval, name='home2Eval'),
+path('traitEval', views.traitEval, name='traitEval'),
+path('correctionEval', views.correctionEval, name='correctionEval'),
+path('selectNote', views.selectNote, name='selectNote'),
+path('listNotes', views.listNotes, name='listNotes'),
+path('extractNote', views.extractNote, name='extractNote'),
+path('logout', views.logout, name='logout'),
+path('comments', views.comments, name='comments'),
+path('recup', views.recup, name='recup'),
+path('rep', views.rep, name='rep'),
+path('pdf',views.GeneratePdf.as_view(), name='pdf'),
+path('extrat', views.extrat, name='extrat'),
+path('correct', views.correct, name='correct'),
+path('correct1', views.correct1, name='correct1'),
+path('notes',views.notes, name='notes'),
+path('note',views.note, name='note'),
+path('cor',views.cor, name='cor'),
+
+
+
+]
+

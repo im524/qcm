@@ -1,0 +1,205 @@
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>QCM</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'myblog/et.css' %}">
+	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
+    <nav class="navbar navbar-expand-sm bg-success navbar-dark fixed-top" style="opacity: 0.6;">
+   <a class="navbar-brand mr-4" href="/">QCM</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a class="navbar-brand mr-4" href="{% url 'logout' %}">Logout</a>
+    </nav>
+</head>
+<body>
+<script>
+$(document).ready(function() {
+	var max_fields      = 10; //maximum input boxes allowed
+	var wrapper   		= $(".input_fields_wrap"); //Fields wrapper
+	var add_button      = $(".add_field_button"); //Add button ID
+
+	var x = 1; //initlal text box count
+	$(add_button).click(function(e){ //on add input button click
+		e.preventDefault();
+		if(x < max_fields){ //max input box allowed
+			x++; //text box increment
+			$(wrapper).append('<div class="row"></br><textarea placeholder="Reponse" class="textarea" placeholder="10 lines of textarea" rows="10" name="reponse" COLS=60 ></textarea>&nbsp;<textarea placeholder="Commentaire" class="textarea" placeholder="10 lines of textarea" rows="10" name="comment" COLS=60 ></textarea>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="flag"><option value=True>Vrai</option><option value=False>Faux</option></select>&nbsp;&nbsp; </br></br><a href="#" class="remove_field"><button class="bs">Remove</button></a></div>'); //add input box
+		}
+	});
+
+	$(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+		e.preventDefault(); $(this).parent('div').remove(); x--;
+	})
+});
+</script>
+<br>
+<br>
+<br>
+<br>
+
+   <div class="container-fluid">
+    <div class="card flex-md-row mb-4 h-md-250" style="
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.30);background-color: #ededed
+  ">
+        <div class="card-body d-flex flex-column align-items-start">
+<div class="center">
+<h3>Ajouter Des Questions</h3></br>
+<div class="con">
+        <form method="post"  action="add_question_form_submission">
+            <div class="row">
+              {% csrf_token %}
+            <select name="matiere">
+        <option value=" ">matiere...</option>
+         {% for mati in mat %}
+        <option value={{mati.idmatiere}}>
+        <p>  {{mati.nomMatiere }}</p>
+        </option> {% endfor %}
+            </select></br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <select name="dif"><option value="">Niveau...</option>
+		 <option value=1>facile</option>
+		 <option value=2>intermediaire</option>
+		 <option value=3>difficile</option>
+ </select></br></br></div>
+            <br>
+            <br>
+            <br>
+ <textarea placeholder="question" class="textarea" placeholder="10 lines of textarea" rows="10" name="question" COLS=60 ></textarea>
+             &nbsp;
+ <textarea placeholder="Commentaire" class="textarea" placeholder="10 lines of textarea" rows="10" name="Commentaire" COLS=60 ></textarea>
+            <br>
+            <br>
+            <br>
+<textarea placeholder="Reponse" class="textarea" placeholder="10 lines of textarea" rows="10" name="reponse" COLS=60 ></textarea> &nbsp;
+ <textarea placeholder="Commentaire" class="textarea" placeholder="10 lines of textarea" rows="10" name="comment" COLS=60 ></textarea>
+
+         <select name="flag">
+		 <option value=True>Vrai</option>
+		 <option value=False>Faux</option>
+         </select>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="add_field_button">Ajouter reponse</button>
+            <div class="input_fields_wrap"></br><br class="container"></div></br></br>
+         <button align="center" type="submit" value="ajouter">valider</button></div></div>
+          </form>
+        </div> </div></div> </div>
+		 <style type="text/css">
+		 	input
+
+  { height: 40%;
+    margin-left: 100px;
+    border : 2px solid grey;
+    border-radius: 4px;
+    outline: none;
+    padding: 5px;
+    box-sizing: border-box;
+
+
+  }
+  input:focus
+  {
+      border-bottom: green;
+      box-shadow: 0 0 8px green;
+  }
+  button
+  {
+
+    border:none;
+    background-color: darkgreen;
+    color: white;
+    padding: 10px;
+
+    box-sizing: border-box;
+    font-family: 'Quicksand',sans-serif;
+
+
+  }
+  button:hover{
+  background-color:green;
+  }
+                 select {
+  width: 25%;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+  margin-left: 30px;
+}
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 20px 40px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin-left: 100px;
+}
+.but
+{
+	margin-top: 30px;
+	margin-left: 250px;
+
+
+}
+.btn
+{
+	border: 1px solid white;
+	padding: 10px 20px;
+	color: white;
+	text-decoration: none;
+	font-size: 13px;
+	text-transform: uppercase;
+
+}
+.btn-one
+{
+	background-color: #4CAF50;
+	font-family: "roboto" , "sans-serif";
+	border-color: #4CAF50;
+
+}
+.container{
+margin-left: 50px;
+}
+.bs{
+background-color:red;
+color:white;
+}
+.bs:hover{
+background-color:red;
+color:white;
+}
+h3{
+  margin-left: 12%;
+}
+.con
+{
+  margin-left: 10%;
+}
+
+		 </style></body></html>
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

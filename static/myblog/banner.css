@@ -1,0 +1,10 @@
+ .banner {
+      position: relative;
+      height: 210px;
+      background-image: url('bb.png');
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      }

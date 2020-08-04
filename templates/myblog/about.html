@@ -1,0 +1,10 @@
+{% extends "myblog/base.html" %}
+ {% block content %}
+ <select name="matiere"> {% for mati in mat %}
+     <option value="{{mati.nomMatiere }}">
+          <p>  {{mati.nomMatiere }}</p>
+         </option> {% endfor %}
+ </select>
+
+{% endblock content %}
+

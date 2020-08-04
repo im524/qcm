@@ -1,0 +1,114 @@
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>QCM</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" type="text/css" href="{% static 'myblog/ben.css' %}">
+	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-success navbar-dark fixed-top" style="opacity: 0.6;">
+   <a class="navbar-brand mr-4" href="/">QCM</a>
+</nav>
+<header>
+<div id="demo" class="carousel slide" data-ride="carousel" >
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+  </ul>
+
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'myblog/best.png' %}" alt="Los Angeles" width="2000" height="500" style="opacity: 0.7;">
+      <center><div class="carousel-caption">
+        <a href="espaceEtudiant"  class="btn btn-outline-success btn-lg" >Espace etudiant</a>
+         &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="espaceEnseignant" class="btn btn-outline-success btn-lg" >Espace enseignant</a>
+
+      </div></center>
+    </div>
+    <div class="carousel-item ">
+      <img src="{% static 'myblog/cp.png' %}" alt="New York" width="2000" height="500" style="opacity: 0.7;">
+      <center><div class="carousel-caption">
+    <a href="espaceEtudiant"  class="btn btn-outline-success btn-lg">Espace etudiant</a>
+         &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="espaceEnseignant" class="btn btn-outline-success btn-lg">Espace enseignant</a>
+  </div></center>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+</header>
+<!-- Intro -->
+	<div class="container text-center">
+		<br> <br>
+		<h2 class="thin">Boost up your skills with a new way of learning.</h2>
+		<p class="text-muted">
+			“YESTERDAY I WAS CLEVER, SO I CHANGED THE WORLD. TODAY I AM WISE, SO I AM CHANGING MYSELF.” –RUMI<br>
+Learning is an exercise in changing the self.
+			<br>
+
+		</p>
+	</div>
+	<!-- /Intro-->
+
+	<!-- Highlights - jumbotron -->
+	<div class="jumbotron top-space">
+		<div class="container">
+
+			<h3 class="text-center thin">Raisons pour utiliser cette application web.</h3>
+
+			<div class="row">
+				<div class="col-md-3 col-sm-6 highlight">
+					<div class="h-caption"><h4><i class="fa fa-cogs fa-5"></i>Pour l'etudiant</h4></div>
+					<div class="h-body text-center">
+						<p> Lorsque les élèves ne sont testés sur ce qu'ils savent qu'à la fin d'une unité, à mi-parcours ou en finale, ils reportent souvent leurs études jusqu'aux jours précédant le test.</p>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6 highlight">
+					<div class="h-caption"><h4><i class="fa fa-flash fa-5"></i>Pour l'etudiant</h4></div>
+					<div class="h-body text-center">
+						<p>  Les quiz, en revanche, ont des enjeux beaucoup plus faibles. Ils sont moins formels et conçus pour tester un plus petit ensemble de compétences. Plus vous posez de questionnaires, moins vous réussissez mal dans un seul questionnaire aura un effet négatif sur la note d'un élève, ce qui réduira encore plus les enjeux. </p>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6 highlight">
+					<div class="h-caption"><h4><i class="fa fa-heart fa-5"></i>Pour l'enseignant</h4></div>
+					<div class="h-body text-center">
+						<p> Les enseignants peuvent concentrer l'apprentissage sur quelques concepts clés à la fois. Cela aidera les élèves à maximiser leurs études régulières et leur donnera une chance d'acquérir une compréhension approfondie de chaque partie d'une unité.</p>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6 highlight">
+					<div class="h-caption"><h4><i class="fa fa-smile-o fa-5"></i>Pour l'enseignant</h4></div>
+					<div class="h-body text-center">
+						<p>les enseignants peuvent rapidement organiser un quiz en ligne et planifier un moment pour les étudiants. Une fois que les élèves ont répondu au questionnaire, les enseignants peuvent voir des statistiques sur les résultats des élèves, leur permettant de modifier et d'ajuster rapidement leur enseignement ou de partager les résultats avec les élèves. </p>
+					</div>
+				</div>
+			</div> <!-- /row  -->
+
+		</div>
+	</div>
+	<!-- /Highlights -->
+
+</body>
+</html>
+
+
+   {% endblock content %}
